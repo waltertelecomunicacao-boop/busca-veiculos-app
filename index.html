@@ -8,9 +8,56 @@
 
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
-
 </head>
+<!-- Firebase -->
+<script type="module">
 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA7qJXYw7EwgSCwgxPCmEX5d7-z5JQiGME",
+  authDomain: "controle-veiculos-5c712.firebaseapp.com",
+  projectId: "controle-veiculos-5c712",
+  storageBucket: "controle-veiculos-5c712.firebasestorage.app",
+  messagingSenderId: "474398266384",
+  appId: "1:474398266384:web:6a0989eb0c36c5a7a8e695"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// salvar veículo
+async function salvarVeiculo(){
+
+let placa = document.getElementById("placa").value
+let nome = document.getElementById("nome").value
+let modelo = document.getElementById("modelo").value
+
+await addDoc(collection(db,"veiculos"),{
+placa:placa,
+nome:nome,
+modelo:modelo
+})
+alert("Veículo salvo na nuvem")
+}
+// buscar veículos
+async function listarVeiculos(){
+const querySnapshot = await getDocs(collection(db,"veiculos"));
+let html=""
+querySnapshot.forEach((doc)=>{
+let v = doc.data()
+html += `
+<div class="card">
+Placa: ${v.placa}<br>
+Nome: ${v.nome}<br>
+Modelo: ${v.modelo}
+</div>
+`
+})
+document.getElementById("lista").innerHTML = html
+}
+listarVeiculos()
+</script>
 <body>
 
 <header>
