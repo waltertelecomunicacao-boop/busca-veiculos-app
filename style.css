@@ -1,0 +1,52 @@
+
+body{
+font-family: Arial;
+background:#f2f2f2;
+margin:0;
+}
+
+header{
+background:#1976d2;
+color:white;
+padding:15px;
+text-align:center;
+}
+
+.container{
+max-width:500px;
+margin:auto;
+padding:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin:5px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:8px;
+border:none;
+border-radius:8px;
+background:#1976d2;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.card{
+background:white;
+padding:15px;
+border-radius:10px;
+margin-top:10px;
+box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+
+.delete{
+background:#e53935;
+margin-top:10px;
+}
